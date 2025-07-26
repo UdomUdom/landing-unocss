@@ -1,0 +1,56 @@
+<style>
+  .search-wrapper {
+    @apply flex items-center gap-2;
+  }
+
+  .search-input {
+    @apply px-4 py-2 text-sm border border-gray-300 rounded-full outline-none bg-white shadow-sm transition-all duration-300 ease-in-out;
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .search-input.open {
+    width: 200px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .search-button {
+    @apply flex items-center gap-2 px-4 py-2 text-sm font-medium bg-teal-600 text-white rounded-full shadow-md hover:bg-teal-700 active:scale-95 transition-transform duration-150;
+  }
+
+  .search-button i {
+    @apply text-white;
+  }
+</style>
+
+<div>
+  <div class="search-wrapper" id="search-wrapper">
+    <input
+      type="text"
+      placeholder="ค้นหา..."
+      id="search-input"
+      class="search-input"
+    />
+    <button class="search-button" id="search-btn" type="button">
+      <i class="i-heroicons-magnifying-glass-20-solid w-4 h-4"></i>
+      <span>ค้นหา</span>
+      
+    </button>
+  </div>
+
+  <script type="module" is:inline>
+    const btn = document.getElementById('search-btn');
+    const input = document.getElementById('search-input');
+
+    let open = false;
+
+    btn.addEventListener('click', () => {
+      open = !open;
+      input.classList.toggle('open');
+      if (open) input.focus();
+      else input.value = '';
+    });
+  </script>
+</div>

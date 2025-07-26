@@ -1,0 +1,86 @@
+---
+const { title } = Astro.props;
+import SearchBox from "../components/SearchBox.astro";
+---
+
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title ?? "SRK & DYMS"}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body class="font-sans text-gray-800 m-0 p-0">
+    <header class="sticky top-0 z-50 bg-white shadow">
+      <div class="flex items-center justify-between border-b">
+        <div class="">
+          <img
+            src="/Logo.png"
+            alt="Logo"
+            class="h-20 object-contain pl-40 p-3"
+          />
+        </div>
+
+        <div class="flex items-center gap-4 text-sm pr-40">
+          <SearchBox />
+            <a href="#" class="text-lg font-bold text-gray-600 no-underline">TH</a>
+            <span class="mx-1 font-bold text-gray-600">|</span>
+            <a href="#" class="text-lg font-bold text-gray-600 no-underline">EN</a>
+        </div>
+      </div>
+
+      <nav class="bg-gray-200 px-6 py-3 text-sm font-medium">
+        <ul class="flex gap-8 items-center list-none pl-40 pr-50">
+            <ul class="flex justify-between gap-8 items-center list-none w-full">
+              <li>
+                <a
+                  href="/"
+                  class="flex items-center gap-1 text-gray-500 hover:text-black text-lg no-underline"
+                >
+                  <i class="fas fa-home"></i>
+                </a>
+              </li>
+              <li>
+                <a href="/sustainability" class="text-gray-500 hover:text-black text-lg no-underline"
+                  >ความยั่งยืน</a
+                >
+              </li>
+              <li>
+                <a href="/about" class="text-gray-500 hover:text-black text-lg no-underline"
+                  >เกี่ยวกับเรา</a
+                >
+              </li>
+              <li>
+                <a href="/news" class="text-gray-500 hover:text-black text-lg no-underline"
+                  >ข่าวสารและกิจกรรม</a
+                >
+              </li>
+              <li>
+                <a href="/careers" class="text-gray-500 hover:text-black text-lg no-underline"
+                  >ร่วมงานกับเรา</a
+                >
+              </li>
+              <li>
+                <a href="/contact" class="text-gray-500 hover:text-black text-lg no-underline"
+                  >ติดต่อเรา</a
+                >
+              </li>
+            </ul>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="">
+      <slot />
+    </main>
+
+    <footer class="bg-gray-100 text-center text-xs py-4 mt-10 text-gray-500">
+      © 2025 SRK & DYMS. All rights reserved.
+    </footer>
+  </body>
+</html>
