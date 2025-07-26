@@ -9,11 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.12.3",
     "astro-i18next": "^1.0.0-beta.21",
-    "astro-icon": "^1.1.5",
-    "tailwindcss": "^4.1.11"
+    "astro-icon": "^1.1.5"
   },
   "devDependencies": {
     "@unocss/astro": "^66.3.3",

@@ -5,7 +5,7 @@ import i18next, { t } from "i18next";
 <div class="relative" x-data="{ open: false }">
   <button
     @click="open = !open; if(open) $nextTick(() => $refs.searchInput.focus())"
-    class="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full transition-all"
+    class="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full transition-all border-none bg-transparent cursor-pointer"
     :class="open ? 'bg-gray-200' : 'hover:bg-gray-100'"
     type="button"
     :aria-label="open ? t('closeSearch') : t('toggleSearch')"
@@ -27,19 +27,23 @@ import i18next, { t } from "i18next";
     </svg>
   </button>
 
-  <input
-    x-ref="searchInput"
-    type="text"
-    :placeholder="t('searchPlaceholder')"
+  <div
     x-show="open"
-    @keydown.escape="open = false"
-    @click.outside="open = false"
-    class="absolute right-0 top-full mt-2 px-4 py-2 text-sm border border-gray-300 rounded-full outline-none bg-white shadow-sm transition-all duration-300 w-64"
     x-transition:enter="transition ease-out duration-100"
     x-transition:enter-start="opacity-0 scale-95"
     x-transition:enter-end="opacity-100 scale-100"
     x-transition:leave="transition ease-in duration-75"
     x-transition:leave-start="opacity-100 scale-100"
     x-transition:leave-end="opacity-0 scale-95"
-  />
+    @keydown.escape="open = false"
+    @click.outside="open = false"
+    class="absolute right-0 top-full mt-2 w-64 z-50"
+  >
+    <input
+      x-ref="searchInput"
+      type="text"
+      :placeholder="t('searchPlaceholder')"
+      class="w-full px-4 py-2 text-sm border border-gray-300 rounded-full outline-none bg-white shadow-sm transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+    />
+  </div>
 </div>
