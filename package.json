@@ -10,5 +10,9 @@
   },
   "dependencies": {
     "astro": "^5.12.3"
+  },
+  "devDependencies": {
+    "@unocss/astro": "^66.3.3",
+    "unocss": "^66.3.3"
   }
 }
