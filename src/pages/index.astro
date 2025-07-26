@@ -1,9 +1,26 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import i18next, { t } from "i18next";
 ---
 
 <BaseLayout title="Home">
-  <div >
-    <img src="/Bg2.png" alt="Logo" style="width: 100%; display: block; height: auto;" />
+  <div class="relative">
+    <img
+      src="/Bg2.png"
+      alt={t("homeHeroAlt")}
+      width="1920"
+      height="1080"
+      class="w-full h-auto object-cover"
+      loading="eager"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white text-center px-4">
+        {t("heroTitle")}
+      </h1>
+    </div>
   </div>
+
+  <!-- Additional sections would go here -->
 </BaseLayout>

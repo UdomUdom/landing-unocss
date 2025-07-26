@@ -1,0 +1,75 @@
+---
+import i18next, { t } from "i18next";
+import { Trans, HeadHrefLangs } from "astro-i18next/components";
+
+const currentLang = i18next.language;
+const navLinks = [
+  { key: "home", icon: "fa-home" },
+  { key: "sustainability" },
+  { key: "about" },
+  { key: "news" },
+  { key: "careers" },
+  { key: "contact" },
+];
+
+let isMenuOpen = false;
+---
+
+<nav class="bg-gray-200" aria-label="Main navigation">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-3 sm:hidden">
+      <button
+        type="button"
+        class="border-0 bg-gray-200 text-gray-500 hover:text-black focus:outline-none"
+        onclick="isMenuOpen = !isMenuOpen"
+      >
+        <i class={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
+      </button>
+    </div>
+
+    <ul
+      class="hidden sm:flex gap-8 md:gap-14 py-3 text-sm font-medium overflow-x-auto justify-center"
+    >
+      {
+        navLinks.map((link) => (
+          <li class="justify-center items-center flex">
+            <a
+              href={`/${currentLang}${t(`${link.key}Link`)}`}
+              class={`flex items-center gap-1 text-gray-500 hover:text-black text-lg no-underline whitespace-nowrap w-full ${
+                link.icon ? "px-2" : "px-3 py-2"
+              }`}
+            >
+              {link.icon && <i class={`fas ${link.icon}`} />}
+              {!link.icon && t(link.key)}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    {
+      isMenuOpen && (
+        <div class="sm:hidden absolute top-full left-0 w-full bg-gray-200 shadow-lg z-50">
+          <ul class="flex flex-col gap-1 py-2 text-sm font-medium">
+            {navLinks.map((link) => (
+              <li class="w-full">
+                <a
+                  href={`/${currentLang}${t(`${link.key}Link`)}`}
+                  class={`flex items-center gap-3 text-gray-500 hover:text-black text-lg no-underline w-full px-4 py-3 ${
+                    link.icon ? "" : "pl-12"
+                  }`}
+                  onclick="isMenuOpen = false"
+                >
+                  {link.icon && (
+                    <i class={`fas ${link.icon} w-5 text-center`} />
+                  )}
+                  {t(link.key)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </div>
+</nav>
