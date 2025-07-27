@@ -1,24 +1,29 @@
 ---
-import i18next, { t } from "i18next";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<div class="relative" x-data="{ open: false }">
+<div class="pt-2 relative mx-auto text-gray-600 w-full max-w-md md:max-w-xl">
+  <input
+    class="w-full border-0 shadow-md h-10 px-5 pr-12 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gray-200 transition-all duration-300"
+    type="search"
+    name="search"
+    placeholder={t("search.placeholder")}
+    aria-label="Search"
+  />
   <button
-    @click="open = !open; if(open) $nextTick(() => $refs.searchInput.focus())"
-    class="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full transition-all border-none bg-transparent cursor-pointer"
-    :class="open ? 'bg-gray-200' : 'hover:bg-gray-100'"
-    type="button"
-    :aria-label="open ? t('closeSearch') : t('toggleSearch')"
-    :aria-expanded="open"
+    type="submit"
+    class="absolute right-0 top-0 mt-2.5 mr-3 border-0 bg-transparent text-gray-500 hover:text-black focus:outline-none transition-transform duration-200"
+    aria-label="Submit search"
   >
-    <span class="text-black">{t("search")}</span>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="20"
       height="20"
       viewBox="0 0 1024 1024"
       class="transition-transform duration-200"
-      :class="{'rotate-90': open}"
     >
       <path
         fill="currentColor"
@@ -26,24 +31,4 @@ import i18next, { t } from "i18next";
       ></path>
     </svg>
   </button>
-
-  <div
-    x-show="open"
-    x-transition:enter="transition ease-out duration-100"
-    x-transition:enter-start="opacity-0 scale-95"
-    x-transition:enter-end="opacity-100 scale-100"
-    x-transition:leave="transition ease-in duration-75"
-    x-transition:leave-start="opacity-100 scale-100"
-    x-transition:leave-end="opacity-0 scale-95"
-    @keydown.escape="open = false"
-    @click.outside="open = false"
-    class="absolute right-0 top-full mt-2 w-64 z-50"
-  >
-    <input
-      x-ref="searchInput"
-      type="text"
-      :placeholder="t('searchPlaceholder')"
-      class="w-full px-4 py-2 text-sm border border-gray-300 rounded-full outline-none bg-white shadow-sm transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-    />
-  </div>
 </div>

@@ -1,15 +1,36 @@
 ---
-import i18next, { t } from "i18next";
-import { Trans, HeadHrefLangs } from "astro-i18next/components";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
-const currentLang = i18next.language;
-const navLinks = [
-  { key: "home", icon: "fa-home" },
-  { key: "sustainability" },
-  { key: "about" },
-  { key: "news" },
-  { key: "careers" },
-  { key: "contact" },
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+type NavTranslationKey =
+  | "nav.sustainability"
+  | "nav.about"
+  | "nav.news"
+  | "nav.careers"
+  | "nav.contact";
+
+type NavLink =
+  | { key: "home"; text: string; path: string; icon: string }
+  | {
+      key: Exclude<string, "home">;
+      text: NavTranslationKey;
+      path: string;
+      icon?: string;
+    };
+
+const navLinks: NavLink[] = [
+  { key: "home", text: "", path: "/", icon: "fa-home" },
+  {
+    key: "sustainability",
+    text: "nav.sustainability",
+    path: `/${lang}/sustainability`,
+  },
+  { key: "about", text: "nav.about", path: `/${lang}/about` },
+  { key: "news", text: "nav.news", path: `/${lang}/news` },
+  { key: "careers", text: "nav.careers", path: `/${lang}/careers` },
+  { key: "contact", text: "nav.contact", path: `/${lang}/contact` },
 ];
 
 let isMenuOpen = false;
@@ -22,6 +43,7 @@ let isMenuOpen = false;
         type="button"
         class="border-0 bg-gray-200 text-gray-500 hover:text-black focus:outline-none"
         onclick="isMenuOpen = !isMenuOpen"
+        aria-label="Toggle menu"
       >
         <i class={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
       </button>
@@ -34,13 +56,16 @@ let isMenuOpen = false;
         navLinks.map((link) => (
           <li class="justify-center items-center flex">
             <a
-              href={`/${currentLang}${t(`${link.key}Link`)}`}
+              href={link.path}
               class={`flex items-center gap-1 text-gray-500 hover:text-black text-lg no-underline whitespace-nowrap w-full ${
                 link.icon ? "px-2" : "px-3 py-2"
               }`}
             >
-              {link.icon && <i class={`fas ${link.icon}`} />}
-              {!link.icon && t(link.key)}
+              {link.icon && <i class={`fas ${link.icon} w-5 text-center`} />}
+              {link.text &&
+                (link.text.startsWith("nav.")
+                  ? t(link.text as NavTranslationKey)
+                  : link.text)}
             </a>
           </li>
         ))
@@ -54,7 +79,7 @@ let isMenuOpen = false;
             {navLinks.map((link) => (
               <li class="w-full">
                 <a
-                  href={`/${currentLang}${t(`${link.key}Link`)}`}
+                  href={link.path}
                   class={`flex items-center gap-3 text-gray-500 hover:text-black text-lg no-underline w-full px-4 py-3 ${
                     link.icon ? "" : "pl-12"
                   }`}
@@ -63,7 +88,10 @@ let isMenuOpen = false;
                   {link.icon && (
                     <i class={`fas ${link.icon} w-5 text-center`} />
                   )}
-                  {t(link.key)}
+                  {link.text &&
+                    (link.text.startsWith("nav.")
+                      ? t(link.text as NavTranslationKey)
+                      : link.text)}
                 </a>
               </li>
             ))}

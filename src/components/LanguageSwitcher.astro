@@ -1,0 +1,35 @@
+---
+import SearchBox from "./SearchBox.astro";
+
+interface Props {
+  currentLang: string;
+  languages: { code: string; label: string }[];
+}
+
+const { currentLang, languages } = Astro.props;
+---
+
+<div class="flex items-center gap-2 sm:gap-4 text-sm pr-4 sm:pr-40">
+  <SearchBox />
+  <div class="flex items-center">
+    {
+      languages.map((lang, index) => (
+        <>
+          <button
+            class={`text-lg font-bold border-0 bg-white cursor-pointer hover:text-gray-500 no-underline ${currentLang === lang.code ? "text-blue-600" : "text-gray-600"}`}
+            onclick={`(() => {
+              const url = new URL(window.location.href);
+              url.searchParams.set("lang", "${lang.code}");
+              window.location.href = url.toString();
+            })()`}
+          >
+            {lang.label}
+          </button>
+          {index < languages.length - 1 && (
+            <span class="mx-1 font-bold text-gray-600">|</span>
+          )}
+        </>
+      ))
+    }
+  </div>
+</div>
