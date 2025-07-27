@@ -1,11 +1,12 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Layout from "../layouts/BaseLayout.astro";
+import Bg2 from "../../public/Bg2.png";
 ---
 
-<BaseLayout title="Home" description="Your page description here">
+<Layout title="Home" description="Your page description here">
   <div class="relative">
     <img
-      src="/Bg2.png"
+      src={Bg2.src}
       alt="homeHeroAlt"
       width="1920"
       height="1080"
@@ -19,4 +20,4 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </h1>
     </div>
   </div>
-</BaseLayout>
+</Layout>
