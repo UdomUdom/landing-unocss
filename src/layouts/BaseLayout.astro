@@ -1,6 +1,14 @@
 ---
 const { title } = Astro.props;
-import SearchBox from "../components/SearchBox.astro";
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+
+const languages = [
+  { code: "th", label: "TH" },
+  { code: "en", label: "EN" },
+];
+const currentLang = Astro.params.lang || "th"; // Get from URL or default
 ---
 
 <html lang="th">
@@ -15,7 +23,7 @@ import SearchBox from "../components/SearchBox.astro";
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
   </head>
-  <body class="font-sans text-gray-800 m-0 p-0">
+  <!-- <body class="font-sans text-gray-800 m-0 p-0">
     <header class="sticky top-0 z-50 bg-white shadow">
       <div class="flex items-center justify-between border-b">
         <div class="">
@@ -28,49 +36,61 @@ import SearchBox from "../components/SearchBox.astro";
 
         <div class="flex items-center gap-4 text-sm pr-40">
           <SearchBox />
-            <a href="#" class="text-lg font-bold text-gray-600 no-underline">TH</a>
-            <span class="mx-1 font-bold text-gray-600">|</span>
-            <a href="#" class="text-lg font-bold text-gray-600 no-underline">EN</a>
+          <a href="#" class="text-lg font-bold text-gray-600 no-underline">TH</a
+          >
+          <span class="mx-1 font-bold text-gray-600">|</span>
+          <a href="#" class="text-lg font-bold text-gray-600 no-underline">EN</a
+          >
         </div>
       </div>
 
       <nav class="bg-gray-200 px-6 py-3 text-sm font-medium">
         <ul class="flex gap-8 items-center list-none pl-40 pr-50">
-            <ul class="flex justify-between gap-8 items-center list-none w-full">
-              <li>
-                <a
-                  href="/"
-                  class="flex items-center gap-1 text-gray-500 hover:text-black text-lg no-underline"
-                >
-                  <i class="fas fa-home"></i>
-                </a>
-              </li>
-              <li>
-                <a href="/sustainability" class="text-gray-500 hover:text-black text-lg no-underline"
-                  >ความยั่งยืน</a
-                >
-              </li>
-              <li>
-                <a href="/about" class="text-gray-500 hover:text-black text-lg no-underline"
-                  >เกี่ยวกับเรา</a
-                >
-              </li>
-              <li>
-                <a href="/news" class="text-gray-500 hover:text-black text-lg no-underline"
-                  >ข่าวสารและกิจกรรม</a
-                >
-              </li>
-              <li>
-                <a href="/careers" class="text-gray-500 hover:text-black text-lg no-underline"
-                  >ร่วมงานกับเรา</a
-                >
-              </li>
-              <li>
-                <a href="/contact" class="text-gray-500 hover:text-black text-lg no-underline"
-                  >ติดต่อเรา</a
-                >
-              </li>
-            </ul>
+          <ul class="flex justify-between gap-8 items-center list-none w-full">
+            <li>
+              <a
+                href="/"
+                class="flex items-center gap-1 text-gray-500 hover:text-black text-lg no-underline"
+              >
+                <i class="fas fa-home"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/sustainability"
+                class="text-gray-500 hover:text-black text-lg no-underline"
+                >ความยั่งยืน</a
+              >
+            </li>
+            <li>
+              <a
+                href="/about"
+                class="text-gray-500 hover:text-black text-lg no-underline"
+                >เกี่ยวกับเรา</a
+              >
+            </li>
+            <li>
+              <a
+                href="/news"
+                class="text-gray-500 hover:text-black text-lg no-underline"
+                >ข่าวสารและกิจกรรม</a
+              >
+            </li>
+            <li>
+              <a
+                href="/careers"
+                class="text-gray-500 hover:text-black text-lg no-underline"
+                >ร่วมงานกับเรา</a
+              >
+            </li>
+            <li>
+              <a
+                href="/contact"
+                class="text-gray-500 hover:text-black text-lg no-underline"
+                >ติดต่อเรา</a
+              >
+            </li>
+          </ul>
         </ul>
       </nav>
     </header>
@@ -82,5 +102,25 @@ import SearchBox from "../components/SearchBox.astro";
     <footer class="bg-gray-100 text-center text-xs py-4 mt-10 text-gray-500">
       © 2025 SRK & DYMS. All rights reserved.
     </footer>
+  </body> -->
+  <body class="font-sans text-gray-800 m-0 p-0">
+    <header class="sticky top-0 z-50 bg-white shadow">
+      <div class="flex items-center justify-between border-b">
+        <div class="">
+          <img
+            src="/Logo.png"
+            alt="Logo"
+            class="h-20 object-contain pl-40 p-3"
+          />
+        </div>
+        <LanguageSwitcher currentLang={currentLang} languages={languages} />
+      </div>
+      <Navbar />
+    </header>
+    <div class="background"></div>
+    <main class="">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>

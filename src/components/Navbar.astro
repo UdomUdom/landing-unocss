@@ -1,0 +1,103 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+type NavTranslationKey =
+  | "nav.sustainability"
+  | "nav.about"
+  | "nav.news"
+  | "nav.careers"
+  | "nav.contact";
+
+type NavLink =
+  | { key: "home"; text: string; path: string; icon: string }
+  | {
+      key: Exclude<string, "home">;
+      text: NavTranslationKey;
+      path: string;
+      icon?: string;
+    };
+
+const navLinks: NavLink[] = [
+  { key: "home", text: "", path: "/", icon: "fa-home" },
+  {
+    key: "sustainability",
+    text: "nav.sustainability",
+    path: `/${lang}/sustainability`,
+  },
+  { key: "about", text: "nav.about", path: `/${lang}/about` },
+  { key: "news", text: "nav.news", path: `/${lang}/news` },
+  { key: "careers", text: "nav.careers", path: `/${lang}/careers` },
+  { key: "contact", text: "nav.contact", path: `/${lang}/contact` },
+];
+
+let isMenuOpen = false;
+---
+
+<nav class="bg-gray-200 py-2" aria-label="Main navigation">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-3 sm:hidden">
+      <button
+        type="button"
+        class="border-0 bg-gray-200 text-gray-500 hover:text-black focus:outline-none"
+        onclick="isMenuOpen = !isMenuOpen"
+        aria-label="Toggle menu"
+      >
+        <i class={`fas ${isMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
+      </button>
+    </div>
+
+    <ul
+      class="hidden sm:flex gap-8 md:gap-14 py-3 text-sm font-medium overflow-x-auto justify-center"
+    >
+      {
+        navLinks.map((link) => (
+          <li class="justify-center items-center flex">
+            <a
+              href={link.path}
+              class={`flex items-center gap-1 text-gray-500 hover:text-black text-lg no-underline whitespace-nowrap w-full ${
+                link.icon ? "px-2" : "px-3 py-2"
+              }`}
+            >
+              {link.icon && <i class={`fas ${link.icon} w-5 text-center`} />}
+              {link.text &&
+                (link.text.startsWith("nav.")
+                  ? t(link.text as NavTranslationKey)
+                  : link.text)}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    {
+      isMenuOpen && (
+        <div class="sm:hidden absolute top-full left-0 w-full bg-gray-200 shadow-lg z-50">
+          <ul class="flex flex-col gap-1 py-2 text-sm font-medium">
+            {navLinks.map((link) => (
+              <li class="w-full">
+                <a
+                  href={link.path}
+                  class={`flex items-center gap-3 text-gray-500 hover:text-black text-lg no-underline w-full px-4 py-3 ${
+                    link.icon ? "" : "pl-12"
+                  }`}
+                  onclick="isMenuOpen = false"
+                >
+                  {link.icon && (
+                    <i class={`fas ${link.icon} w-5 text-center`} />
+                  )}
+                  {link.text &&
+                    (link.text.startsWith("nav.")
+                      ? t(link.text as NavTranslationKey)
+                      : link.text)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </div>
+</nav>

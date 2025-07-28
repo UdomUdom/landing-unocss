@@ -1,9 +1,23 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Layout from "../layouts/BaseLayout.astro";
+import Bg2 from "../../public/Bg2.png";
 ---
 
-<BaseLayout title="Home">
-  <div >
-    <img src="/Bg2.png" alt="Logo" style="width: 100%; display: block; height: auto;" />
+<Layout title="Home" description="Your page description here">
+  <div class="relative">
+    <img
+      src={Bg2.src}
+      alt="homeHeroAlt"
+      width="1920"
+      height="1080"
+      class="w-full h-auto object-cover"
+      loading="eager"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white text-center px-4">
+        heroTitle
+      </h1>
+    </div>
   </div>
-</BaseLayout>
+</Layout>
