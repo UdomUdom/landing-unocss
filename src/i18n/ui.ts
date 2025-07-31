@@ -13,6 +13,7 @@ export const ui = {
     "nav.careers": "Careers",
     "nav.contact": "Contact Us",
     "search.placeholder": "Search...",
+    "button.info": "Learn More",
   },
   th: {
     "nav.sustainability": "ความยั่งยืน",
@@ -21,5 +22,6 @@ export const ui = {
     "nav.careers": "ร่วมงานกับเรา",
     "nav.contact": "ติดต่อเรา",
     "search.placeholder": "ค้นหา...",
+    "button.info": "ดูเพิ่มเติม",
   },
 } as const;

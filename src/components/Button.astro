@@ -1,0 +1,18 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const { route } = Astro.props;
+---
+
+<button
+  class="btn-primary"
+  onclick={`window.location.href='/${lang}/${route}'`}
+>
+  <span
+    class="inline-block px-4 py-1.5 text-sm font-semibold text-white rounded-full transition-transform hover:scale-105"
+  >
+    {t("button.info")}
+  </span>
+</button>

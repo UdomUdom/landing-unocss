@@ -1,22 +1,79 @@
 ---
 import Layout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/Button.astro";
 ---
 
 <Layout title="Home" description="Your page description here">
-  <div class="bg-[#2b2a2a]">
-    <section
-      id="Home"
-      class=""
-    >
+  <div class="items-center justify-center h-dvh">
+    <section id="home" class="flex flex-col">
       <div class="flex flex-col items-center justify-center text-start">
-        <div class="w-full h-screen relative">
-          <img
-            src="/Bg2.png"
-            alt="homeHeroAlt"
-            class="w-full h-auto object-cover"
-          />
+        <div class="w-full h-screen">
+          <img src="/Bg1.png" alt="homeHeroAlt" class="w-full h-auto" />
         </div>
       </div>
     </section>
   </div>
+  <section id="home_env" class="relative h-dvh w-full overflow-hidden">
+    <div class="static justify-right items-end flex mt-64">
+      <img
+        src="/public/web_asset/env_dev.jpg"
+        alt="Social Development"
+        class="h-2xl rounded-l-lg shadow-lg"
+      />
+    </div>
+
+    <div
+      class="absolute inset-0 flex items-center justify-end lg:justify-center p-6 lg:p-12 mr-64"
+    >
+      <div
+        class="bg-white max-w-sm w-full drop-shadow-2xl shadow-lg transform lg:translate-x-1/4 transition-transform duration-300"
+      >
+        <div class="p-6">
+          <h3 class="font-bold text-xl mb-2 text-blue-600">
+            การพัฒนาด้านสิ่งแวดล้อม
+          </h3>
+          <p class="text-gray-700 text-base mb-4">
+            บริษัท SDK & DYMS
+            มุ่งเน้นการพัฒนาองค์กรควบคู่กับการอนุรักษ์สิ่งแวดล้อม ด้วยแนวทาง
+            “SDK & DYMS Green Mission” ที่ครอบคลุมการใช้พลังงานสะอาด การรีไซเคิล
+            การเพิ่มพื้นที่สีเขียว
+            และการสร้างจิตสำนึกด้านสิ่งแวดล้อมในองค์กรและชุมชน
+            โดยมีเป้าหมายในการลดผลกระทบทางสิ่งแวดล้อม
+            และส่งเสริมความยั่งยืนในทุกมิติของธุรกิจ
+          </p>
+          <Button />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="home_social" class="relative h-dvh w-full overflow-hidden">
+    <div class="static justify-left items-end flex mt-64">
+      <img
+        src="/public/web_asset/social_dev.jpg"
+        alt="Social Development"
+        class="h-2xl rounded-r-lg shadow-lg"
+      />
+    </div>
+
+    <div
+      class="absolute inset-0 flex items-center justify-end lg:justify-center p-6 lg:p-12 mr-64"
+    >
+      <div
+        class="bg-white max-w-sm w-full drop-shadow-2xl shadow-lg transform lg:translate-x-1/4 transition-transform duration-300"
+      >
+        <div class="p-6">
+          <h3 class="font-bold text-xl mb-2 text-blue-600">
+            การพัฒนาด้านสังคม
+          </h3>
+          <p class="text-gray-700 text-base mb-4">
+            บริษัท SDK & DYMS ส่งเสริมการพัฒนาสังคมผ่านโครงการ
+            “รวมพลังเพื่อสังคมสะอาด” โดยจัดกิจกรรมเก็บขยะร่วมกับชุมชน
+            ให้ความรู้เรื่องการคัดแยกขยะ และส่งเสริมจิตอาสาในองค์กร
+            เพื่อยกระดับคุณภาพชีวิตและลดผลกระทบต่อสิ่งแวดล้อมในระยะยาว
+          </p>
+          <Button />
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
