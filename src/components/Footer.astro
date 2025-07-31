@@ -1,7 +1,120 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang) as (key: string) => string;
+
+type FooterTranslationKey =
+  | "footer.sustainability"
+  | "footer.sustainability.environment"
+  | "footer.sustainability.social"
+  | "footer.about"
+  | "footer.about.general"
+  | "footer.about.vision"
+  | "footer.news"
+  | "footer.news.announcements"
+  | "footer.careers"
+  | "footer.careers.hr"
+  | "footer.careers.jobs"
+  | "footer.contact"
+  | "footer.contact.location"
+  | "footer.contact.more";
+
+const footerLinks = {
+  sustainability: [
+    { key: "footer.sustainability.environment", path: `/${lang}/sustainability#env` },
+    { key: "footer.sustainability.social", path: `/${lang}/sustainability#social` },
+  ],
+  about: [
+    { key: "footer.about.general", path: `/${lang}/about#general` },
+    { key: "footer.about.vision", path: `/${lang}/about#vision` },
+  ],
+  news: [
+    { key: "footer.news.announcements", path: `/${lang}/news` },
+  ],
+  careers: [
+    { key: "footer.careers.hr", path: `/${lang}/careers#hr` },
+    { key: "footer.careers.jobs", path: `/${lang}/careers#jobs` },
+  ],
+  contact: [
+    { key: "footer.contact.location", path: `/${lang}/contact#location` },
+    { key: "footer.contact.more", path: `/${lang}/contact#more` },
+  ],
+};
 ---
 
-<footer class="bg-gray-100 text-center text-xs py-4 text-gray-500">
-  <div class="container mx-auto px-4">footer</div>
+<footer class="bg-[#2d3235] text-white text-sm py-12">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 px-6 text-left">
+
+    <div>
+      <h3 class="font-bold text-white mb-4 text-base">{t("footer.sustainability")}</h3>
+      <div class="text-sm text-gray-400 space-y-2">
+        {footerLinks.sustainability.map(link => (
+          <div class="relative pl-5">
+            <span class="absolute left-0 text-white">›</span>
+            <a href={link.path} class="hover:text-white text-gray-400 no-underline">
+              {t(link.key)}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <h3 class="font-bold text-white mb-4 text-base">{t("footer.about")}</h3>
+      <div class="space-y-2 text-sm">
+        {footerLinks.about.map(link => (
+          <div class="flex items-start gap-2">
+            <span class="text-white">›</span>
+            <a href={link.path} class="text-gray-400 hover:text-white no-underline">
+              {t(link.key as FooterTranslationKey)}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <h3 class="font-bold text-white mb-4 text-base">{t("footer.news")}</h3>
+      <div class="space-y-2 text-sm">
+        {footerLinks.news.map(link => (
+          <div class="flex items-start gap-2">
+            <span class="text-white">›</span>
+            <a href={link.path} class="text-gray-400 hover:text-white no-underline">
+              {t(link.key as FooterTranslationKey)}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <h3 class="font-bold text-white mb-4 text-base">{t("footer.careers")}</h3>
+      <div class="space-y-2 text-sm">
+        {footerLinks.careers.map(link => (
+          <div class="flex items-start gap-2">
+            <span class="text-white">›</span>
+            <a href={link.path} class="text-gray-400 hover:text-white no-underline">
+              {t(link.key as FooterTranslationKey)}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <h3 class="font-bold text-white mb-4 text-base">{t("footer.contact")}</h3>
+      <div class="space-y-2 text-sm">
+        {footerLinks.contact.map(link => (
+          <div class="flex items-start gap-2">
+            <span class="text-white">›</span>
+            <a href={link.path} class="text-gray-400 hover:text-white no-underline">
+              {t(link.key as FooterTranslationKey)}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
 </footer>

@@ -13,20 +13,11 @@ type NavTranslationKey =
 
 type NavLink =
   | { key: "home"; text: string; path: string; icon: string }
-  | {
-      key: Exclude<string, "home">;
-      text: NavTranslationKey;
-      path: string;
-      icon?: string;
-    };
+  | { key: Exclude<string, "home">; text: NavTranslationKey; path: string; icon?: string; };
 
 const navLinks: NavLink[] = [
   { key: "home", text: "", path: "/", icon: "fa-home" },
-  {
-    key: "sustainability",
-    text: "nav.sustainability",
-    path: `/${lang}/sustainability`,
-  },
+  { key: "sustainability", text: "nav.sustainability", path: `/${lang}/sustainability` },
   { key: "about", text: "nav.about", path: `/${lang}/about` },
   { key: "news", text: "nav.news", path: `/${lang}/news` },
   { key: "careers", text: "nav.careers", path: `/${lang}/careers` },
@@ -71,7 +62,6 @@ let isMenuOpen = false;
         ))
       }
     </ul>
-
     {
       isMenuOpen && (
         <div class="sm:hidden absolute top-full left-0 w-full bg-gray-200 shadow-lg z-50">

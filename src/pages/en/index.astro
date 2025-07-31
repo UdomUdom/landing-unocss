@@ -3,74 +3,81 @@ import Layout from "../../layouts/BaseLayout.astro";
 import Button from "../../components/Button.astro";
 ---
 
-<Layout title="Home" description="Your page description here">
-  <div class="items-center justify-center h-dvh">
+<Layout title="Home">
+  <div class="items-center justify-center">
     <section id="home" class="flex flex-col">
       <div class="flex flex-col items-center justify-center text-start">
-        <div class="w-full h-screen">
-          <img src="/Bg1.png" alt="homeHeroAlt" class="w-full h-auto" />
+        <div class="w-full">
+          <img src="/Bg2.png" alt="homeHeroAlt" class="w-full h-auto" />
         </div>
       </div>
     </section>
   </div>
-  <section id="home_env" class="relative h-dvh w-full overflow-hidden">
-    <div class="static justify-right items-end flex mt-64">
-      <img
-        src="/public/web_asset/env_dev.jpg"
-        alt="Social Development"
-        class="h-2xl rounded-l-lg shadow-lg"
-      />
-    </div>
 
-    <div
-      class="absolute inset-0 flex items-center justify-end lg:justify-center p-6 lg:p-12 mr-64"
-    >
-      <div
-        class="bg-white max-w-sm w-full drop-shadow-2xl shadow-lg transform lg:translate-x-1/4 transition-transform duration-300"
-      >
-        <div class="p-6">
-          <h3 class="font-bold text-xl mb-2 text-blue-600">
-            Environmental development
+  <section
+    id="home_env"
+    class="w-full h-auto lg:h-[500px] bg-white pt-20 pb-30 hover:bg-gray-100"
+  >
+    <div class="grid grid-cols-1 lg:grid-cols-[1.7fr_2fr] relative h-full">
+      <div class="relative flex items-center justify-end px-6 lg:px-12">
+        <div
+          class="bg-white rounded-xl shadow-xl max-w-md w-full p-6 lg:p-8 z-10
+        lg:translate-x-1/4 transition-transform duration-300"
+        >
+          <h3 class="text-xl font-bold text-blue-600 mb-4">
+            Environmental Development
           </h3>
-          <p class="text-gray-700 text-base mb-4">
-            SDK & DYMS company focuses on organizational development in
-            conjunction with the environmental conservation with the "SDK & DYMS
-            GREEN Mission" guideline that covers the use of clean energy,
-            recycling, adding green space. And raising environmental awareness
-            in organizations and communities With the goal of reducing
-            environmental impacts And promote sustainability in all dimensions
-            of the business
+          <p class="text-gray-700 mb-6 leading-relaxed">
+            SDK & DYMS is committed to organizational development alongside
+            environmental conservation through the “SDK & DYMS Green Mission”
+            approach, which encompasses the use of clean energy, recycling,
+            increasing green spaces, and cultivating environmental awareness
+            within the organization and communities. The goal is to reduce
+            environmental impact and promote sustainability across all
+            dimensions of business.
           </p>
           <Button />
         </div>
       </div>
+      <div class="h-full w-full">
+        <img
+          src="/web_asset/env_dev.jpg"
+          alt="Environmental Development"
+          class="w-full h-full object-cover"
+          style="border-end-start-radius: 0.5rem; border-start-start-radius: 0.5rem;"
+        />
+      </div>
     </div>
   </section>
-  <section id="home_env" class="relative h-dvh w-full overflow-hidden">
-    <div class="static justify-left items-end flex mt-64">
-      <img
-        src="/public/web_asset/social_dev.jpg"
-        alt="Social Development"
-        class="h-2xl rounded-r-lg shadow-lg"
-      />
-    </div>
 
-    <div
-      class="absolute inset-0 flex items-center justify-end lg:justify-center p-6 lg:p-12 mr-64"
-    >
-      <div
-        class="bg-white max-w-sm w-full drop-shadow-2xl shadow-lg transform lg:translate-x-1/4 transition-transform duration-300"
-      >
-        <div class="p-6">
-          <h3 class="font-bold text-xl mb-2 text-blue-600">
-            Social development
+  <section
+    id="home_social"
+    class="w-full h-auto lg:h-[500px] bg-white pt-20 pb-30 hover:bg-gray-100"
+  >
+    <div class="grid grid-cols-1 lg:grid-cols-[1.7fr_2fr] relative h-full">
+      <div class="h-full w-full">
+        <img
+          src="/web_asset/social_dev.jpg"
+          alt="Social Development"
+          class="w-full h-full object-cover"
+          style="border-end-end-radius: 0.5rem; border-start-end-radius: 0.5rem;"
+        />
+      </div>
+      <div class="relative flex items-center justify-start px-6 lg:px-12">
+        <div
+          class="bg-white rounded-xl shadow-xl max-w-md w-full p-6 lg:p-8 z-10
+        lg:-translate-x-1/4 transition-transform duration-300"
+        >
+          <h3 class="text-xl font-bold text-blue-600 mb-4">
+            Social Development
           </h3>
-          <p class="text-gray-700 text-base mb-4">
-            SDK & DYMS company promotes social development through the project
-            "Together for a Clean Society" by organizing community clean-up
-            activities, providing knowledge about waste segregation, and
-            promoting volunteerism within the organization to enhance the
-            quality of life and reduce environmental impacts in the long term.
+          <p class="text-gray-700 mb-6 leading-relaxed">
+            SDK & DYMS promotes social development through the
+            “United for a Cleaner Society” initiative, organizing community
+            clean-up activities, providing waste separation education, and
+            encouraging volunteerism within the organization. These efforts aim
+            to improve quality of life and reduce long-term environmental
+            impact.
           </p>
           <Button />
         </div>

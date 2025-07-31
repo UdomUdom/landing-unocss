@@ -3,36 +3,30 @@ import Layout from "../../layouts/BaseLayout.astro";
 import Button from "../../components/Button.astro";
 ---
 
-<Layout title="Home" description="Your page description here">
-  <div class="items-center justify-center h-dvh">
+<Layout title="Home">
+  <div class="items-center justify-center">
     <section id="home" class="flex flex-col">
       <div class="flex flex-col items-center justify-center text-start">
-        <div class="w-full h-screen">
-          <img src="/Bg1.png" alt="homeHeroAlt" class="w-full h-auto" />
+        <div class="w-full">
+          <img src="/Bg2.png" alt="homeHeroAlt" class="w-full h-auto" />
         </div>
       </div>
     </section>
   </div>
-  <section id="home_env" class="relative h-dvh w-full overflow-hidden">
-    <div class="static justify-right items-end flex mt-64">
-      <img
-        src="/public/web_asset/env_dev.jpg"
-        alt="Social Development"
-        class="h-2xl rounded-l-lg shadow-lg"
-      />
-    </div>
-
-    <div
-      class="absolute inset-0 flex items-center justify-end lg:justify-center p-6 lg:p-12 mr-64"
-    >
-      <div
-        class="bg-white max-w-sm w-full drop-shadow-2xl shadow-lg transform lg:translate-x-1/4 transition-transform duration-300"
-      >
-        <div class="p-6">
-          <h3 class="font-bold text-xl mb-2 text-blue-600">
+  <section
+    id="home_env"
+    class="w-full h-auto lg:h-[500px] bg-white pt-20 pb-30 hover:bg-gray-100"
+  >
+    <div class="grid grid-cols-1 lg:grid-cols-[1.7fr_2fr] relative h-full">
+      <div class="relative flex items-center justify-end px-6 lg:px-12">
+        <div
+          class="bg-white rounded-xl shadow-xl max-w-md w-full p-6 lg:p-8 z-10
+        lg:translate-x-1/4 transition-transform duration-300"
+        >
+          <h3 class="text-xl font-bold text-blue-600 mb-4">
             การพัฒนาด้านสิ่งแวดล้อม
           </h3>
-          <p class="text-gray-700 text-base mb-4">
+          <p class="text-gray-700 mb-6 leading-relaxed">
             บริษัท SDK & DYMS
             มุ่งเน้นการพัฒนาองค์กรควบคู่กับการอนุรักษ์สิ่งแวดล้อม ด้วยแนวทาง
             “SDK & DYMS Green Mission” ที่ครอบคลุมการใช้พลังงานสะอาด การรีไซเคิล
@@ -44,28 +38,39 @@ import Button from "../../components/Button.astro";
           <Button />
         </div>
       </div>
+      <div class="h-full w-full">
+        <img
+          src="/web_asset/env_dev.jpg"
+          alt="Environmental Development"
+          class="w-full h-full object-cover"
+          style="border-end-start-radius: 0.5rem; border-start-start-radius: 0.5rem;"
+        />
+      </div>
     </div>
   </section>
-  <section id="home_social" class="relative h-dvh w-full overflow-hidden">
-    <div class="static justify-left items-end flex mt-64">
-      <img
-        src="/public/web_asset/social_dev.jpg"
-        alt="Social Development"
-        class="h-2xl rounded-r-lg shadow-lg"
-      />
-    </div>
 
-    <div
-      class="absolute inset-0 flex items-center justify-end lg:justify-center p-6 lg:p-12 mr-64"
-    >
-      <div
-        class="bg-white max-w-sm w-full drop-shadow-2xl shadow-lg transform lg:translate-x-1/4 transition-transform duration-300"
-      >
-        <div class="p-6">
-          <h3 class="font-bold text-xl mb-2 text-blue-600">
+  <section
+    id="home_social"
+    class="w-full h-auto lg:h-[500px] bg-white pt-20 pb-30 hover:bg-gray-100"
+  >
+    <div class="grid grid-cols-1 lg:grid-cols-[1.7fr_2fr] relative h-full">
+      <div class="h-full w-full">
+        <img
+          src="/web_asset/social_dev.jpg"
+          alt="Social Development"
+          class="w-full h-full object-cover"
+          style="border-end-end-radius: 0.5rem; border-start-end-radius: 0.5rem;"
+        />
+      </div>
+      <div class="relative flex items-center justify-start px-6 lg:px-12">
+        <div
+          class="bg-white rounded-xl shadow-xl max-w-md w-full p-6 lg:p-8 z-10
+        lg:-translate-x-1/4 transition-transform duration-300"
+        >
+          <h3 class="text-xl font-bold text-blue-600 mb-4">
             การพัฒนาด้านสังคม
           </h3>
-          <p class="text-gray-700 text-base mb-4">
+          <p class="text-gray-700 mb-6 leading-relaxed">
             บริษัท SDK & DYMS ส่งเสริมการพัฒนาสังคมผ่านโครงการ
             “รวมพลังเพื่อสังคมสะอาด” โดยจัดกิจกรรมเก็บขยะร่วมกับชุมชน
             ให้ความรู้เรื่องการคัดแยกขยะ และส่งเสริมจิตอาสาในองค์กร
