@@ -28,7 +28,8 @@ export const ui = {
     "footer.contact": "Contact Us",
     "footer.contact.location": "Company Location",
     "footer.contact.more": "More",
-
+    "nav.sustainability.environmental": "Environmental Development",
+    "nav.sustainability.social": "Social Development",
   },
   th: {
     "nav.sustainability": "ความยั่งยืน",
@@ -52,5 +53,7 @@ export const ui = {
     "footer.contact": "ติดต่อเรา",
     "footer.contact.location": "ที่ตั้งบริษัท",
     "footer.contact.more": "เพิ่มเติม",
+    "nav.sustainability.environmental": "การพัฒนาด้านสิ่งแวดล้อม",
+    "nav.sustainability.social": "การพัฒนาด้านสังคม",
   },
 } as const;

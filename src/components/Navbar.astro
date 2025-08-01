@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import "../global.css";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -9,15 +10,15 @@ type NavTranslationKey =
   | "nav.about"
   | "nav.news"
   | "nav.careers"
-  | "nav.contact";
+  | "nav.contact"
+  | "nav.sustainability.environmental"
+  | "nav.sustainability.social";
 
 type NavLink =
   | { key: "home"; text: string; path: string; icon: string }
-  | { key: Exclude<string, "home">; text: NavTranslationKey; path: string; icon?: string; };
+  | { key: Exclude<string, "home">; text: NavTranslationKey; path: string; icon?: string };
 
 const navLinks: NavLink[] = [
-  { key: "home", text: "", path: "/", icon: "fa-home" },
-  { key: "sustainability", text: "nav.sustainability", path: `/${lang}/sustainability` },
   { key: "about", text: "nav.about", path: `/${lang}/about` },
   { key: "news", text: "nav.news", path: `/${lang}/news` },
   { key: "careers", text: "nav.careers", path: `/${lang}/careers` },
@@ -40,54 +41,89 @@ let isMenuOpen = false;
       </button>
     </div>
 
-    <ul
-      class="hidden sm:flex gap-8 md:gap-14 text-sm font-medium overflow-x-auto justify-center"
-    >
+    <ul class="hidden sm:flex gap-8 md:gap-14 text-sm font-medium overflow-visible justify-center relative list-none">
+      <li class="justify-center items-center flex list-none">
+        <a
+          href={`/${lang}`}
+          class="flex items-center gap-1 text-gray-500 hover:text-black text-lg no-underline whitespace-nowrap px-2"
+        >
+          <i class="fas fa-home w-5 text-center" />
+        </a>
+      </li>
+
+      <li class="relative list-none">
+        <button
+          id="sustainabilityBtn"
+          class="flex items-center gap-1 text-gray-500 hover:text-black text-lg no-underline whitespace-nowrap px-3 py-2 bt-dropdown"
+          onclick="toggleDropdown()"
+        >
+          {t('nav.sustainability')}
+          <i class="fas fa-chevron-down text-xs ml-1"></i>
+        </button>
+
+        <ul
+          id="sustainabilityDropdown"
+          class="hidden absolute top-full left-0 mt-2 w-64 bg-white border border-gray-300 rounded shadow-lg z-50 nav-dropdown"
+        >
+          <li>
+            <a
+              href={`/${lang}/sustainability_environmental_development`}
+              class="block px-4 py-2 hover:bg-gray-100 text-gray-700"
+            >
+              {t('nav.sustainability.environmental')}
+            </a>
+          </li>
+          <li>
+            <a
+              href={`/${lang}/sustainability_social_development`}
+              class="block px-4 py-2 hover:bg-gray-100 text-gray-700"
+            >
+              {t('nav.sustainability.social')}
+            </a>
+          </li>
+        </ul>
+      </li>
       {
         navLinks.map((link) => (
           <li class="justify-center items-center flex">
             <a
               href={link.path}
-              class={`flex items-center gap-1 text-gray-500 hover:text-black text-lg no-underline whitespace-nowrap w-full ${
+                style="font-size: 1.125rem; font-family: Arial, sans-serif;"
+              class={`flex items-center gap-1 text-gray-500 hover:text-black no-underline whitespace-nowrap w-full  ${
                 link.icon ? "px-2" : "px-3 py-2"
               }`}
             >
               {link.icon && <i class={`fas ${link.icon} w-5 text-center`} />}
-              {link.text &&
-                (link.text.startsWith("nav.")
-                  ? t(link.text as NavTranslationKey)
-                  : link.text)}
+              {t(link.text as NavTranslationKey)}
             </a>
           </li>
         ))
       }
     </ul>
-    {
-      isMenuOpen && (
-        <div class="sm:hidden absolute top-full left-0 w-full bg-gray-200 shadow-lg z-50">
-          <ul class="flex flex-col gap-1 py-2 text-sm font-medium">
-            {navLinks.map((link) => (
-              <li class="w-full">
-                <a
-                  href={link.path}
-                  class={`flex items-center gap-3 text-gray-500 hover:text-black text-lg no-underline w-full px-4 py-3 ${
-                    link.icon ? "" : "pl-12"
-                  }`}
-                  onclick="isMenuOpen = false"
-                >
-                  {link.icon && (
-                    <i class={`fas ${link.icon} w-5 text-center`} />
-                  )}
-                  {link.text &&
-                    (link.text.startsWith("nav.")
-                      ? t(link.text as NavTranslationKey)
-                      : link.text)}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )
-    }
   </div>
 </nav>
+
+<script is:inline>
+  function toggleDropdown() {
+    const dropdown = document.getElementById("sustainabilityDropdown");
+    const isOpen = dropdown.classList.contains("block");
+    document.querySelectorAll("[id$='Dropdown']").forEach((el) => {
+      el.classList.add("hidden");
+      el.classList.remove("block");
+    });
+
+    if (!isOpen) {
+      dropdown.classList.remove("hidden");
+      dropdown.classList.add("block");
+    }
+  }
+  document.addEventListener("click", (e) => {
+    const btn = document.getElementById("sustainabilityBtn");
+    const dropdown = document.getElementById("sustainabilityDropdown");
+
+    if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.add("hidden");
+      dropdown.classList.remove("block");
+    }
+  });
+</script>
