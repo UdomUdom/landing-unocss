@@ -1,0 +1,28 @@
+---
+const { url } = Astro;
+const title = Astro.props.title;
+const breadcrumbs = [
+  { label: "Home", href: url.pathname.startsWith("/en") ? "/en" : "/th" },
+  { label: title, href: url.pathname },
+].filter((crumb, idx, arr) => {
+  return idx === 0 || crumb.label !== arr[idx - 1].label;
+});
+---
+
+<div class="breadcrumbs text-sm bg-white pl-5">
+  <ul>
+    {
+      breadcrumbs.map((crumb, index) => (
+        <li>
+          <a
+            href={crumb.href}
+            class={index === breadcrumbs.length - 1 ? "text-gray-500" : ""}
+            aria-current={index === breadcrumbs.length - 1 ? "page" : undefined}
+          >
+            {crumb.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

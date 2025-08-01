@@ -1,14 +1,19 @@
 ---
 import Layout from "../../layouts/BaseLayout.astro";
 import Button from "../../components/Button.astro";
+import Card from "../../components/Card.astro";
 ---
 
-<Layout title="Home">
+<Layout title="การพัฒนาด้านสิ่งแวดล้อม">
   <div class="items-center justify-center">
     <section id="home" class="flex flex-col">
       <div class="flex flex-col items-center justify-center text-start">
         <div class="w-full">
-          <img src="/Bg2.png" alt="homeHeroAlt" class="w-full h-auto" />
+          <img
+            src="/web_asset/dev_head.jpg"
+            alt="homeHeroAlt"
+            class="w-full h-auto"
+          />
         </div>
       </div>
     </section>
@@ -17,35 +22,27 @@ import Button from "../../components/Button.astro";
     id="home_env"
     class="w-full h-auto lg:h-[600px] bg-white pt-20 pb-30 hover:bg-gray-100"
   >
-    <div class="grid grid-cols-1 lg:grid-cols-[1.5fr_2fr] relative h-full">
-      <div class="relative flex items-center justify-end px-6 lg:px-12">
-        <div
-          class="bg-white rounded-xl shadow-xl max-w-md w-full p-6 lg:p-8 z-10
-        lg:translate-x-1/4 transition-transform duration-300"
-        >
-          <h3 class="text-xl font-bold text-blue-600 mb-4">
-            การพัฒนาด้านสิ่งแวดล้อม
-          </h3>
-          <p class="text-gray-700 mb-6 leading-relaxed">
-
+    <div class="relative flex items-center justify-center px-6 lg:px-12">
+      <div class="card w-xl bg-base-100 card-xs">
+        <div class="card-body">
+          <p class="text-gray-700 mb-6 leading-relaxed text-4">
+            บริษัท SDK & DYMS
+            ตระหนักถึงความสำคัญของสิ่งแวดล้อมในทุกกระบวนการดำเนินธุรกิจ
+            เรามุ่งมั่นในการเป็นองค์กรที่รับผิดชอบต่อสังคมและสิ่งแวดล้อม
+            ผ่านการดำเนินงานที่สอดคล้องกับเป้าหมายการพัฒนาที่ยั่งยืน (SDGs)
+            และหลัก ESG (Environment, Social, Governance) โดยให้ความสำคัญกับ
+            การพัฒนานวัตกรรมที่เป็นมิตรกับสิ่งแวดล้อม
+            การลดผลกระทบจากกระบวนการผลิต
+            และการร่วมมือกับชุมชนในการอนุรักษ์ทรัพยากรธรรมชาติ
           </p>
-          <Button />
         </div>
-      </div>
-      <div class="h-full w-full">
-        <img
-          src="/web_asset/env_dev.jpg"
-          alt="Environmental Development"
-          class="w-full h-full object-cover"
-          style="border-end-start-radius: 0.5rem; border-start-start-radius: 0.5rem;"
-        />
       </div>
     </div>
   </section>
 
   <section
     id="home_social"
-    class="w-full h-auto lg:h-[600px] bg-white pt-20 pb-30 hover:bg-gray-100 "
+    class="w-full h-auto lg:h-[600px] bg-white pt-20 pb-30 hover:bg-gray-100"
   >
     <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] relative h-full">
       <div class="h-full w-full">
@@ -64,9 +61,7 @@ import Button from "../../components/Button.astro";
           <h3 class="text-xl font-bold text-blue-600 mb-4">
             การพัฒนาด้านสังคม
           </h3>
-          <p class="text-gray-700 mb-6 leading-relaxed">
-
-          </p>
+          <p class="text-gray-700 mb-6 leading-relaxed"></p>
           <Button />
         </div>
       </div>
@@ -74,6 +69,7 @@ import Button from "../../components/Button.astro";
   </section>
   <section>
     <div>
-        <div class="h-20"></div>
-  </section>  
+      <div class="h-20"></div>
+    </div>
+  </section>
 </Layout>

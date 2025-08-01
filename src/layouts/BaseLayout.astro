@@ -2,6 +2,7 @@
 const { title } = Astro.props;
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
 import LanguageSwitcher from "../components/LanguageSwitcher.astro";
 
 const languages = [
@@ -27,16 +28,22 @@ const currentLang = Astro.params.lang || "th"; // Get from URL or default
     <header class="sticky top-0 z-50 bg-white shadow">
       <div class="flex items-center justify-between border-b">
         <div class="">
-          <img
-            src="/Logo.png"
-            alt="Logo"
-            class="h-20 object-contain pl-40 p-3"
-          />
+          <a
+            href="/"
+            class="flex items-center gap-1 text-gray-500 hover:text-black text-lg no-underline whitespace-nowrap px-2"
+          >
+            <img
+              src="/Logo.png"
+              alt="Logo"
+              class="h-20 object-contain pl-40 p-3"
+            />
+          </a>
         </div>
         <LanguageSwitcher currentLang={currentLang} languages={languages} />
       </div>
       <Navbar />
     </header>
+    <Breadcrumbs title={title} />
     <div class="background"></div>
     <main class="">
       <slot />
