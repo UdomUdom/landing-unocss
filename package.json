@@ -9,8 +9,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.12.3",
-    "astro-icon": "^1.1.5"
+    "@ameinhardt/unocss-preset-daisy": "^1.1.8",
+    "@unocss/reset": "^66.3.3",
+    "astro": "5.12.8",
+    "astro-icon": "^1.1.5",
+    "daisyui": "^5.0.50",
+    "unocss-preset-daisy": "^7.0.0"
   },
   "devDependencies": {
     "@unocss/astro": "^66.3.3",
