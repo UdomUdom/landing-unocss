@@ -1,0 +1,68 @@
+---
+import Layout from "../../layouts/BaseLayout.astro";
+import Card from "../../components/Card.astro";
+
+const socialDescription = `บริษัท SDK & DYMS ส่งเสริมการพัฒนาสังคมผ่านโครงการ
+“รวมพลังเพื่อสังคมสะอาด” โดยจัดกิจกรรมเก็บขยะร่วมกับชุมชน
+ให้ความรู้เรื่องการคัดแยกขยะ และส่งเสริมจิตอาสาในองค์กร
+เพื่อยกระดับคุณภาพชีวิตและลดผลกระทบต่อสิ่งแวดล้อมในระยะยาว`;
+---
+
+<Layout title="ข้อมูลทั่วไป" lang="th">
+  <div class="items-center justify-center">
+    <section id="home" class="flex flex-col">
+      <div class="flex flex-col items-center justify-center text-start">
+        <div class="w-full">
+          <img
+            src="/web_asset/company_head.jpg"
+            alt="homeHeroAlt"
+            class="w-full h-auto"
+          />
+        </div>
+      </div>
+    </section>
+  </div>
+  <section
+    id="home_env"
+    class="w-full h-auto lg:h-[750px] bg-white pt-20 pb-30 hover:bg-gray-100 flex justify-center items-center"
+  >
+    <div
+      class="text-start justify-center flex-col items-center w-full max-w-2xl mx-auto"
+      style="font-family: Arial, Helvetica, sans-serif; font-size: 1.25rem;"
+    >
+      <h1 class="text-2xl font-bold mb-4 text-blue-600">ประวัติบริษัท</h1>
+
+      บริษัท SDK & DYMS
+      ตระหนักถึงความสำคัญของสิ่งแวดล้อมในทุกกระบวนการดำเนินธุรกิจ
+      เรามุ่งมั่นในการเป็นองค์กรที่รับผิดชอบต่อสังคมและสิ่งแวดล้อม
+      ผ่านการดำเนินงานที่สอดคล้องกับเป้าหมายการพัฒนาที่ยั่งยืน (SDGs) และหลัก
+      ESG (Environment, Social, Governance) โดยให้ความสำคัญกับ
+      การพัฒนานวัตกรรมที่เป็นมิตรกับสิ่งแวดล้อม การลดผลกระทบจากกระบวนการผลิต
+      และการร่วมมือกับชุมชนในการอนุรักษ์ทรัพยากรธรรมชาติ
+    </div>
+  </section>
+
+  <section
+    id="home_social"
+    class="w-full h-auto lg:h-[750px] bg-white pt-20 pb-30 hover:bg-gray-100"
+  >
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] relative h-full">
+      <div class="h-full w-full">
+        <img
+          src="/web_asset/company.jpg"
+          alt="Social Development"
+          class="w-full h-xl object-cover"
+          style="border-end-end-radius: 0.5rem; border-start-end-radius: 0.5rem;"
+        />
+      </div>
+      <div class="relative flex items-center justify-start px-6 lg:px-12">
+        <Card
+          title="การพัฒนาด้านสังคม"
+          description={socialDescription}
+          showButton={true}
+          route="sustainability_social_development"
+        />
+      </div>
+    </div>
+  </section>
+</Layout>
