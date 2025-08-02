@@ -1,16 +1,22 @@
 ---
 import Layout from "../../layouts/BaseLayout.astro";
+import Card from "../../components/CardSection.astro";
 import Button from "../../components/Button.astro";
-import Card from "../../components/Card.astro";
+
+const environmentDescription = `• การลดการใช้พลังงานในโรงงานด้วยระบบอัตโนมัติ
+• การเปลี่ยนมาใช้พลังงานสะอาด เช่น พลังงานแสงอาทิตย์
+• การปลูกต้นไม้รอบบริเวณโรงงานเพื่อสร้างพื้นที่สีเขียว
+• การจัดอบรมให้พนักงานมีจิตสำนึกต่อสิ่งแวดล้อม
+• การทำกิจกรรมร่วมกับชุมชนท้องถิ่น เช่น การเก็บขยะในพื้นที่สาธารณะ การร่วมกันดูแลแหล่งน้ำธรรมชาติ`;
 ---
 
-<Layout title="การพัฒนาด้านสิ่งแวดล้อม">
+<Layout title="Home">
   <div class="items-center justify-center">
     <section id="home" class="flex flex-col">
       <div class="flex flex-col items-center justify-center text-start">
         <div class="w-full">
           <img
-            src="/web_asset/dev_head.jpg"
+            src="/web_asset/dev_head_PhotoGrid.png"
             alt="homeHeroAlt"
             class="w-full h-auto"
           />
@@ -20,56 +26,57 @@ import Card from "../../components/Card.astro";
   </div>
   <section
     id="home_env"
-    class="w-full h-auto lg:h-[600px] bg-white pt-20 pb-30 hover:bg-gray-100"
+    class="w-full h-auto lg:h-[500px] bg-white pt-20 pb-30 hover:bg-gray-100 flex items-center justify-center"
   >
-    <div class="relative flex items-center justify-center px-6 lg:px-12">
-      <div class="card w-xl bg-base-100 card-xs">
-        <div class="card-body">
-          <p class="text-gray-700 mb-6 leading-relaxed text-4">
-            บริษัท SDK & DYMS
-            ตระหนักถึงความสำคัญของสิ่งแวดล้อมในทุกกระบวนการดำเนินธุรกิจ
-            เรามุ่งมั่นในการเป็นองค์กรที่รับผิดชอบต่อสังคมและสิ่งแวดล้อม
-            ผ่านการดำเนินงานที่สอดคล้องกับเป้าหมายการพัฒนาที่ยั่งยืน (SDGs)
-            และหลัก ESG (Environment, Social, Governance) โดยให้ความสำคัญกับ
-            การพัฒนานวัตกรรมที่เป็นมิตรกับสิ่งแวดล้อม
-            การลดผลกระทบจากกระบวนการผลิต
-            และการร่วมมือกับชุมชนในการอนุรักษ์ทรัพยากรธรรมชาติ
-          </p>
-        </div>
-      </div>
+    <div
+      class="text-center w-full max-w-2xl mx-auto"
+      style="font-family: Arial, Helvetica, sans-serif; font-size: 1.25rem;"
+    >
+      บริษัท SDK & DYMS
+      ตระหนักถึงความสำคัญของสิ่งแวดล้อมในทุกกระบวนการดำเนินธุรกิจ
+      เรามุ่งมั่นในการเป็นองค์กรที่รับผิดชอบต่อสังคมและสิ่งแวดล้อม
+      ผ่านการดำเนินงานที่สอดคล้องกับเป้าหมายการพัฒนาที่ยั่งยืน (SDGs) และหลัก
+      ESG (Environment, Social, Governance) โดยให้ความสำคัญกับ
+      การพัฒนานวัตกรรมที่เป็นมิตรกับสิ่งแวดล้อม การลดผลกระทบจากกระบวนการผลิต
+      และการร่วมมือกับชุมชนในการอนุรักษ์ทรัพยากรธรรมชาติ
     </div>
   </section>
 
   <section
-    id="home_social"
-    class="w-full h-auto lg:h-[600px] bg-white pt-20 pb-30 hover:bg-gray-100"
+    id="home_env"
+    class="w-full h-auto lg:h-[800px] bg-white pt-20 pb-30 hover:bg-gray-100"
   >
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] relative h-full">
-      <div class="h-full w-full">
-        <img
-          src="/web_asset/social_dev.jpg"
-          alt="Social Development"
-          class="w-full h-full object-cover"
-          style="border-end-end-radius: 0.5rem; border-start-end-radius: 0.5rem;"
+    <div class="grid grid-cols-1 lg:grid-cols-[1.5fr_2fr] relative h-full">
+      <div class="relative flex items-center justify-end px-6 lg:px-12">
+        <Card
+          title="หนึ่งในโครงการสำคัญของบริษัท คือ “SDK & DYMS Green Mission” ที่ครอบคลุมกิจกรรมต่าง ๆ เช่น"
+          description={environmentDescription}
+          showButton={false}
         />
       </div>
-      <div class="relative flex items-center justify-start px-6 lg:px-12">
-        <div
-          class="bg-white rounded-xl shadow-xl max-w-md w-full p-6 lg:p-8 z-10
-        lg:-translate-x-1/4 transition-transform duration-300"
-        >
-          <h3 class="text-xl font-bold text-blue-600 mb-4">
-            การพัฒนาด้านสังคม
-          </h3>
-          <p class="text-gray-700 mb-6 leading-relaxed"></p>
-          <Button />
-        </div>
+      <div class="h-full w-full">
+        <img
+          src="/web_asset/green_mission.jpg"
+          alt="Environmental Development"
+          class="w-full h-full object-cover"
+          style="border-end-start-radius: 0.5rem; border-start-start-radius: 0.5rem;"
+        />
       </div>
     </div>
   </section>
-  <section>
-    <div>
-      <div class="h-20"></div>
+  <section
+    id="home_env"
+    class="w-full h-auto lg:h-[500px] bg-white pt-20 pb-30 hover:bg-gray-100 flex items-center justify-center"
+  >
+    <div
+      class="text-center w-full max-w-2xl mx-auto"
+      style="font-family: Arial, Helvetica, sans-serif; font-size: 1.25rem;"
+    >
+      SDK & DYMS เชื่อว่าความยั่งยืนจะเกิดขึ้นได้ ต้องเริ่มจากภายในองค์กร
+      และขยายผลสู่ภายนอก ผ่านการสร้างความร่วมมือกับพนักงาน คู่ค้า และชุมชน
+      เรามุ่งสู่เป้าหมายในการลดคาร์บอนฟุตพริ้นท์ขององค์กร
+      และเป็นผู้นำในการผลิตอย่างรับผิดชอบ
+      พร้อมทั้งสร้างประโยชน์ให้แก่สังคมและสิ่งแวดล้อมในระยะยาว
     </div>
   </section>
 </Layout>

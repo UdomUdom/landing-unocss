@@ -2,18 +2,9 @@
 import Layout from "../../layouts/BaseLayout.astro";
 import Card from "../../components/Card.astro";
 
-const environmentDescription = `SDK & DYMS is committed to organizational development alongside
-environmental conservation through the “SDK & DYMS Green Mission”
-approach, which encompasses the use of clean energy, recycling,
-increasing green spaces, and cultivating environmental awareness
-within the organization and communities. The goal is to reduce
-environmental impact and promote sustainability across all
-dimensions of business.`;
-const socialDescription = `SDK & DYMS promotes social development through the “United for a
-Cleaner Society” initiative, organizing community clean-up
-activities, providing waste separation education, and encouraging
-volunteerism within the organization. These efforts aim to improve
-quality of life and reduce long-term environmental impact.`;
+const environmentDescription = `บริษัท SDK & DYMS ให้ความสำคัญกับการพัฒนาด้านสังคมควบคู่ไปกับการดำเนินธุรกิจ โดยมุ่งเน้นการมีส่วนร่วมขององค์กรกับชุมชน เพื่อสร้างสังคมที่น่าอยู่และยั่งยืน หนึ่งในกิจกรรมหลักที่บริษัทดำเนินการอย่างต่อเนื่องคือ โครงการเก็บขยะและรณรงค์ลดปริมาณขยะในชุมชน ภายใต้แนวคิด “รวมพลังเพื่อสังคมสะอาด”`;
+const socialDescription = `SDK & DYMS เชื่อว่า “ขยะจะไม่เป็นปัญหาถ้าเราร่วมมือกันจัดการอย่างมีระบบ”
+เราจึงยึดมั่นในการเป็นองค์กรที่ไม่เพียงแค่สร้างคุณค่าให้ธุรกิจแต่ยังช่วยยกระดับคุณภาพชีวิตของสังคมโดยรอบอย่างแท้จริง`;
 ---
 
 <Layout title="Home">
@@ -21,7 +12,11 @@ quality of life and reduce long-term environmental impact.`;
     <section id="home" class="flex flex-col">
       <div class="flex flex-col items-center justify-center text-start">
         <div class="w-full">
-          <img src="/Bg2.png" alt="homeHeroAlt" class="w-full h-auto" />
+          <img
+            src="/web_asset/social_dev_more.jpg"
+            alt="homeHeroAlt"
+            class="w-full h-auto"
+          />
         </div>
       </div>
     </section>
@@ -34,7 +29,7 @@ quality of life and reduce long-term environmental impact.`;
     <div class="grid grid-cols-1 lg:grid-cols-[1.5fr_2fr] relative h-full">
       <div class="relative flex items-center justify-end px-6 lg:px-12">
         <Card
-          title="Environmental Development"
+          title="การพัฒนาด้านสังคม"
           description={environmentDescription}
           showButton={true}
         />
@@ -65,12 +60,11 @@ quality of life and reduce long-term environmental impact.`;
       </div>
       <div class="relative flex items-center justify-start px-6 lg:px-12">
         <Card
-          title="Social Development"
+          title=""
           description={socialDescription}
           showButton={true}
         />
       </div>
     </div>
   </section>
-
 </Layout>
