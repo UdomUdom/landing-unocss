@@ -12,14 +12,20 @@ type NavTranslationKey =
   | "nav.careers"
   | "nav.contact"
   | "nav.sustainability.environmental"
-  | "nav.sustainability.social";
+  | "nav.sustainability.social"
+  | "nav.about.information"
+  | "nav.about.vision";
 
 type NavLink =
   | { key: "home"; text: string; path: string; icon: string }
-  | { key: Exclude<string, "home">; text: NavTranslationKey; path: string; icon?: string };
+  | {
+      key: Exclude<string, "home">;
+      text: NavTranslationKey;
+      path: string;
+      icon?: string;
+    };
 
 const navLinks: NavLink[] = [
-  { key: "about", text: "nav.about", path: `/${lang}/about` },
   { key: "news", text: "nav.news", path: `/${lang}/news` },
   { key: "careers", text: "nav.careers", path: `/${lang}/careers` },
   { key: "contact", text: "nav.contact", path: `/${lang}/contact` },
@@ -41,13 +47,15 @@ let isMenuOpen = false;
       </button>
     </div>
 
-    <ul class="hidden sm:flex gap-8 md:gap-14 text-sm font-medium overflow-visible justify-center relative list-none">
+    <ul
+      class="hidden sm:flex gap-8 md:gap-14 text-sm font-medium overflow-visible justify-center relative list-none"
+    >
       <li class="justify-center items-center flex list-none">
         <a
           href={`/${lang}`}
           class="flex items-center gap-1 text-gray-500 hover:text-black text-lg no-underline whitespace-nowrap px-2"
         >
-          <i class="fas fa-home w-5 text-center" />
+          <i class="fas fa-home w-5 text-center"></i>
         </a>
       </li>
 
@@ -57,7 +65,7 @@ let isMenuOpen = false;
           class="flex items-center gap-1 text-gray-500 hover:text-black text-lg no-underline whitespace-nowrap px-3 py-2 bt-dropdown"
           onclick="toggleDropdown()"
         >
-          {t('nav.sustainability')}
+          {t("nav.sustainability")}
           <i class="fas fa-chevron-down text-xs ml-1"></i>
         </button>
 
@@ -70,7 +78,7 @@ let isMenuOpen = false;
               href={`/${lang}/sustainability_environmental_development`}
               class="block px-4 py-2 hover:bg-gray-100 text-gray-700"
             >
-              {t('nav.sustainability.environmental')}
+              {t("nav.sustainability.environmental")}
             </a>
           </li>
           <li>
@@ -78,17 +86,64 @@ let isMenuOpen = false;
               href={`/${lang}/sustainability_social_development`}
               class="block px-4 py-2 hover:bg-gray-100 text-gray-700"
             >
-              {t('nav.sustainability.social')}
+              {t("nav.sustainability.social")}
             </a>
           </li>
         </ul>
       </li>
+      <li class="relative list-none">
+        <button
+          id="aboutBtn"
+          class="flex items-center gap-1 text-gray-500 hover:text-black text-lg no-underline whitespace-nowrap px-3 py-2 bt-dropdown"
+          onclick="toggleAboutDropdown()"
+        >
+          {t("nav.about")}
+          <i class="fas fa-chevron-down text-xs ml-1"></i>
+        </button>
+
+        <ul
+          id="aboutDropdown"
+          class="hidden absolute top-full left-0 mt-2 w-64 bg-white border border-gray-300 rounded shadow-lg z-50 nav-dropdown"
+        >
+          <li>
+            <a
+              href={`/${lang}/about`}
+              class="block px-4 py-2 hover:bg-gray-100 text-gray-700"
+            >
+              {t("nav.about.information")}
+            </a>
+          </li>
+          <li>
+            <a
+              href={`/${lang}/vision`}
+              class="block px-4 py-2 hover:bg-gray-100 text-gray-700"
+            >
+              {t("nav.about.vision")}
+            </a>
+          </li>
+        </ul>
+      </li>
+      <script is:inline>
+        function toggleAboutDropdown() {
+          const dropdown = document.getElementById("aboutDropdown");
+          const isOpen = dropdown.classList.contains("block");
+          document.querySelectorAll("[id$='Dropdown']").forEach((el) => {
+            el.classList.add("hidden");
+            el.classList.remove("block");
+          });
+
+          if (!isOpen) {
+            dropdown.classList.remove("hidden");
+            dropdown.classList.add("block");
+          }
+        }
+      </script>
       {
         navLinks.map((link) => (
           <li class="justify-center items-center flex">
             <a
               href={link.path}
-                style="font-size: 1.125rem; font-family: Arial, sans-serif;"
+              style="font-size: 1.125rem; font-family: Arial, sans-serif;"
               class={`flex items-center gap-1 text-gray-500 hover:text-black no-underline whitespace-nowrap w-full  ${
                 link.icon ? "px-2" : "px-3 py-2"
               }`}

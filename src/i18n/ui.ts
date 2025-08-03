@@ -30,6 +30,8 @@ export const ui = {
     "footer.contact.more": "More",
     "nav.sustainability.environmental": "Environmental Development",
     "nav.sustainability.social": "Social Development",
+    "nav.about.information": "General Information",
+    "nav.about.vision": "Vision and Policy",
   },
   th: {
     "nav.sustainability": "ความยั่งยืน",
@@ -55,5 +57,7 @@ export const ui = {
     "footer.contact.more": "เพิ่มเติม",
     "nav.sustainability.environmental": "การพัฒนาด้านสิ่งแวดล้อม",
     "nav.sustainability.social": "การพัฒนาด้านสังคม",
+    "nav.about.information": "ข้อมูลทั่วไป",
+    "nav.about.vision": "วิสัยทัศน์และนโยบาย",
   },
 } as const;
