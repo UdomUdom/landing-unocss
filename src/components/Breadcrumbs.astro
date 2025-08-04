@@ -1,8 +1,15 @@
 ---
 const { url } = Astro;
 const title = Astro.props.title;
+
+let homeLabel = "Home";
+const homeHref = url.pathname.startsWith("/en") ? "/en" : "/th";
+if (url.pathname === "/about" || url.pathname === "/vision") {
+  homeLabel = "About";
+}
+
 const breadcrumbs = [
-  { label: "Home", href: url.pathname.startsWith("/en") ? "/en" : "/th" },
+  { label: homeLabel, href: homeHref },
   { label: title, href: url.pathname },
 ].filter((crumb, idx, arr) => {
   return idx === 0 || crumb.label !== arr[idx - 1].label;
