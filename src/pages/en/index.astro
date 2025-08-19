@@ -51,20 +51,19 @@ quality of life and reduce long-term environmental impact.`;
     </div>
   </section>
 
-  <section
-    id="home_social"
-    class="w-full h-auto lg:h-[800px] bg-white pt-20 pb-30 hover:bg-gray-100"
-  >
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] relative h-full">
-      <div class="h-full w-full">
-        <img
-          src="/web_asset/social_dev.jpg"
-          alt="Social Development"
-          class="w-full h-full object-cover"
-          style="border-end-end-radius: 0.5rem; border-start-end-radius: 0.5rem;"
-        />
-      </div>
-      <div class="relative flex items-center justify-start px-6 lg:px-12">
+<section
+  id="home_social"
+  class="w-full h-auto lg:h-[750px] bg-white pt-20 pb-30 hover:bg-gray-100"
+>
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] relative h-full">
+    <div class="h-full w-full relative">
+      <img
+        src="/web_asset/social_dev.jpg"
+        alt="Social Development"
+        class="w-full h-full object-cover rounded-r-lg"
+      />
+
+      <div class="absolute top-1/2 right-[-160px] transform -translate-y-1/2 z-10 w-[400px]">
         <Card
           title="Social Development"
           description={socialDescription}
@@ -73,5 +72,6 @@ quality of life and reduce long-term environmental impact.`;
         />
       </div>
     </div>
-  </section>
+  </div>
+</section>
 </Layout>
