@@ -61,16 +61,18 @@ quality of life and reduce long-term environmental impact.`;
           src="/web_asset/social_dev.jpg"
           alt="Environmental Development"
           class="w-full h-full object-cover"
-          style="border-start-start-radius: 0.5rem; border-start-start-radius: 0.5rem;"
+          style="border-end-end-radius: 0.5rem; border-start-end-radius: 0.5rem;"
         />
       </div>
-      <div class="relative flex items-start justify-start px-6 lg:px-12">
-        <Card
-          title="Social Development"
-          description={socialDescription}
-          showButton={true}
-          route="sustainability_social_development"
-        />
+      <div class="relative px-6 lg:px-12">
+        <div class="-translate-x-80 translate-20">
+          <Card
+            title="Social Development"
+            description={socialDescription}
+            showButton={true}
+            route="sustainability_social_development"
+          />
+        </div>
       </div>
     </div>
   </section>
